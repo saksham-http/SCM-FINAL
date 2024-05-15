@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/originals/23/be/35/23be3506ae373d733f9e23c6c59f7c84.jpg'); 
+            background-size: auto;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Game</h1>
+        <form id="quiz-form">
+            <div class="question">
+                5.Who is the current Prime Minister of BHARAT?
+            </div>
+            <div class="options">
+                <label>
+                    <input type="radio" name="q5" value="a"> a) Rahul Gandhi
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="b"> b) Narendra Modi
+                </label>
+                <label>
+                    <input type="radio" name="q5" value="c"> c) Arwind Kejriwal 
+                </label>
+            </div>
+
+            <button type="button" onclick="submitAnswer()"><a href="6th question.html" style="color: white; text-decoration: none;">NEXT</a></button>
+        </form>
+        
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        const correctAnswers = {
+            q5: "b",
+        };
+    
+        function submitAnswer() {
+            let score = 0;
+            for (const question in correctAnswers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedOption) {
+                    const userAnswer = selectedOption.value;
+                    if (userAnswer === correctAnswers[question]) {
+                        score++;
+                    }
+                }
+            }
+    
+            const resultElement = document.getElementById("result");
+            resultElement.textContent = `You scored ${score} out of ${Object.keys(correctAnswers).length}!`;
+            resultElement.style.display = "block";
+        }
+    </script>
+    </body>
+    </html>
+    
+    
+  
+
